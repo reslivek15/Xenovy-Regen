@@ -28,14 +28,28 @@ public class Rotation : MonoBehaviour
 
     void Update()
     {
-       Vector3  viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
+
+        Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
 
         float horInput = moveInput.x;
         float vertInput = moveInput.y;
+        
+        
         Vector3 inputDir = orientation.forward * vertInput + orientation.right * horInput;
 
+        
         if (inputDir != Vector3.zero)
-            playerModel.forward = Vector3.Slerp(playerModel.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+        {
+            
+            Vector3 targetDirection = inputDir.normalized;
+            
+
+            if (targetDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+                playerModel.rotation = Quaternion.Slerp(playerModel.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            }
+        }
     }
 }
