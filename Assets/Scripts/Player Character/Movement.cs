@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float gravity = -9.8f;
 
     [SerializeField] float groundDrag;
 
