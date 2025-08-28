@@ -38,16 +38,12 @@ public class Rotation : MonoBehaviour
         
         if (inputDir != Vector3.zero)
         {
-            // Get the movement direction relative to the camera orientation
             Vector3 targetDirection = inputDir.normalized;
-            
-            // Only rotate if we have a valid direction
+
             if (targetDirection != Vector3.zero)
             {
-                // Calculate the target rotation to face the movement direction
                 Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-                
-                // Smoothly rotate the player model to face the walking direction
+
                 playerModel.rotation = Quaternion.Slerp(playerModel.rotation, targetRotation, Time.deltaTime * rotationSpeed);
             }
         }
