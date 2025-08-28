@@ -9,7 +9,6 @@ public class Rotation : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] Transform playerModel;
     [SerializeField] Rigidbody rb;
-
     [SerializeField] float rotationSpeed;
 
     private Vector2 moveInput;
@@ -17,7 +16,7 @@ public class Rotation : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        Debug.Log($"Nigga Move Input: {moveInput}");
+        ///Debug.Log($"Nigga Move Input: {moveInput}");
     }
 
     private void Start()
