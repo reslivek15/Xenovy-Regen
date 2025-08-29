@@ -10,6 +10,7 @@ public class Rotation : MonoBehaviour
     [SerializeField] Transform playerModel;
     [SerializeField] Rigidbody rb;
     [SerializeField] float rotationSpeed;
+    [SerializeField] Camera cam; 
 
     private Vector2 moveInput;
 
@@ -27,8 +28,11 @@ public class Rotation : MonoBehaviour
 
     void Update()
     {
-        Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
-        orientation.forward = viewDir.normalized;
+
+        
+        Vector3 cameraForward = cam.transform.forward;
+        cameraForward.y = 0;
+        orientation.forward = cameraForward.normalized;
 
         float horInput = moveInput.x;
         float vertInput = moveInput.y;

@@ -349,6 +349,7 @@ MonoBehaviour:
   playerModel: {fileID: 211106783}
   rb: {fileID: 56551739}
   rotationSpeed: 5
+  cam: {fileID: 1798880372}
 --- !u!1 &93516141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,7 +1678,6 @@ GameObject:
   - component: {fileID: 1846376703}
   - component: {fileID: 1846376702}
   - component: {fileID: 1846376701}
-  - component: {fileID: 1846376707}
   - component: {fileID: 1846376708}
   m_Layer: 0
   m_Name: FreeLook Camera
@@ -1911,23 +1911,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1846376707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846376700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8bbb40950abf04fbb1f9d9d47809b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orientation: {fileID: 1045057639}
-  player: {fileID: 56551738}
-  playerModel: {fileID: 211106783}
-  rb: {fileID: 0}
-  rotationSpeed: 10
 --- !u!114 &1846376708
 MonoBehaviour:
   m_ObjectHideFlags: 0
