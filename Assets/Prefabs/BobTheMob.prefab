@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8962367533869717509}
   - component: {fileID: 1359085176415256722}
   - component: {fileID: 2192218781522078949}
+  - component: {fileID: 8599101350814024409}
   - component: {fileID: 2286486807635494742}
   m_Layer: 0
   m_Name: BobTheMob
@@ -96,6 +97,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c92e8d8d4cf6fb469fc855f468a1e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8599101350814024409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929357945993809132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4a381a74ce30e43a7b9c603c8cf007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Strength: 10
+  Speed: 10
+  Health: 50
+  MaxHealth: 50
+  Energy: 0
+  MaxEnergy: 3
 --- !u!65 &2286486807635494742
 BoxCollider:
   m_ObjectHideFlags: 0

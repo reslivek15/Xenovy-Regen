@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 4815022597597176575}
   - component: {fileID: 3875695251830299462}
   - component: {fileID: 5092605918151120361}
+  - component: {fileID: 5325013922196867085}
   - component: {fileID: 3505062162063216462}
   - component: {fileID: 2264939678990216442}
   m_Layer: 0
@@ -182,6 +183,24 @@ MonoBehaviour:
   rb: {fileID: 2264939678990216442}
   rotationSpeed: 5
   cam: {fileID: 0}
+--- !u!114 &5325013922196867085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244534737054288298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4a381a74ce30e43a7b9c603c8cf007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Strength: 15
+  Speed: 10
+  Health: 100
+  MaxHealth: 100
+  Energy: 0
+  MaxEnergy: 10
 --- !u!114 &3505062162063216462
 MonoBehaviour:
   m_ObjectHideFlags: 0

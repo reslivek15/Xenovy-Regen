@@ -983,6 +983,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BobTheMob
       objectReference: {fileID: 0}
+    - target: {fileID: 1359085176415256722, guid: 710fc3f0029f66a4b834939320296324, type: 3}
+      propertyPath: m_Center.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2192218781522078949, guid: 710fc3f0029f66a4b834939320296324, type: 3}
+      propertyPath: script
+      value: 
+      objectReference: {fileID: 5211978932741326770}
+    - target: {fileID: 2286486807635494742, guid: 710fc3f0029f66a4b834939320296324, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3298247577351559421, guid: 710fc3f0029f66a4b834939320296324, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.13
@@ -1026,8 +1038,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 929357945993809132, guid: 710fc3f0029f66a4b834939320296324, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5211978932741326770}
   m_SourcePrefab: {fileID: 100100000, guid: 710fc3f0029f66a4b834939320296324, type: 3}
+--- !u!1 &5211978932741326769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 929357945993809132, guid: 710fc3f0029f66a4b834939320296324, type: 3}
+  m_PrefabInstance: {fileID: 5211978932741326768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5211978932741326770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211978932741326769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e351ad91d1b34fe4c9f37c70c5948ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

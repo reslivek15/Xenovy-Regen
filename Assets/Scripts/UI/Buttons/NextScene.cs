@@ -13,6 +13,8 @@ public class NextScene : MonoBehaviour
     public void MoveScene()
     {
         ///Debug.Log(thisScene.buildIndex);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene(thisScene.buildIndex + 1);
     }
 }
