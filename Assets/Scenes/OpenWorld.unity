@@ -988,6 +988,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 297290891685664831, guid: 710fc3f0029f66a4b834939320296324, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 929357945993809132, guid: 710fc3f0029f66a4b834939320296324, type: 3}
       propertyPath: m_Name
       value: BobTheMob
@@ -1045,7 +1049,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 297290891685664831, guid: 710fc3f0029f66a4b834939320296324, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 929357945993809132, guid: 710fc3f0029f66a4b834939320296324, type: 3}

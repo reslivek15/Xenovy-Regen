@@ -92,7 +92,10 @@ MonoBehaviour:
   Health: 100
   MaxHealth: 100
   Energy: 0
-  MaxEnergy: 10
+  MaxEnergy: 100
+  Exp: 0
+  MaxExp: 0
+  Level: 0
 --- !u!114 &3505062162063216462
 MonoBehaviour:
   m_ObjectHideFlags: 0

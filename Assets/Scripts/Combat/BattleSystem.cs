@@ -3,15 +3,22 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
+using UnityEngine.SceneManagement;
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
 {
     public BattleState state;
 
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject playerHealthBar;
+    [SerializeField] private GameObject healthPercentage;
     private GameObject player;
     private Stats playerStats;
     public Transform playerStation;
+
+    [SerializeField] private GameObject energyBar;
+    
 
     [SerializeField] private GameObject enemyPrefab;
     private GameObject enemy;
@@ -22,7 +29,10 @@ public class BattleSystem : MonoBehaviour
     public GameObject damgePopUpPrefab;
     private GameObject damgePopUp;
 
-    [SerializeField] private GameObject playerActionGUI;
+    [SerializeField] private GameObject optionButtons;
+    [SerializeField] private GameObject statsOverlay;
+    [SerializeField] private GameObject attackOverlay;
+    [SerializeField] private GameObject itemsOverlay;
     void Start()
     {
         Setup();
@@ -45,27 +55,68 @@ public class BattleSystem : MonoBehaviour
 
         if(playerStats.Speed >= enemyStats.Speed)
         {
-            state = BattleState.PLAYERTURN;
             PlayerTurn();
+        }
+        else
+        {
+            StartCoroutine(EnemyTurn());
         }
 
     }
-    
+
+    IEnumerator UpdateEnemyHealth()
+    {
+        float enemyHealthPercentage = (float)((enemyStats.Health * 100) / enemyStats.MaxHealth);
+
+        while(enemyHealthBar.GetComponent<UnityEngine.UI.Image>().fillAmount > enemyHealthPercentage / 100)
+        {
+            enemyHealthBar.GetComponent<UnityEngine.UI.Image>().fillAmount-=0.01f;
+            yield return new WaitForSeconds(0.01f);
+        }     
+    }
+    private void MakeDamagePopUp()
+    {
+        damgePopUp = Instantiate(damgePopUpPrefab, enemy.transform.GetChild(1).transform);
+        damgePopUp.GetComponent<TMP_Text>().text = playerStats.Strength.ToString();
+        damgePopUp.GetComponent<DamagePopup>().MovePopup();
+    }
     private void PlayerTurn()
     {
-        playerActionGUI.SetActive(true);
+        optionButtons.SetActive(true);
+        statsOverlay.SetActive(true);
     }
 
+    IEnumerator EnemyTurn()
+    {
+        yield return new WaitForSeconds(1f);
+
+        optionButtons.SetActive(true);
+        statsOverlay.SetActive(true);
+
+        playerStats.Health -= enemyStats.Strength;
+
+        float playerHealthPercentage = (float)((playerStats.Health * 100) / playerStats.MaxHealth);
+        healthPercentage.GetComponent<TMP_Text>().text = playerHealthPercentage.ToString() + "%";
+        playerHealthBar.GetComponent<UnityEngine.UI.Image>().fillAmount = playerHealthPercentage / 100;
+    }
     public void BasicAttack()
     {
         enemyStats.Health -= playerStats.Strength;
 
-        damgePopUp = Instantiate(damgePopUpPrefab,enemy.transform.GetChild(1).transform);
-        damgePopUp.GetComponent<TMP_Text>().text = playerStats.Strength.ToString();
-        damgePopUp.GetComponent<DamagePopup>().MovePopup();
+        MakeDamagePopUp();
 
+        StartCoroutine(UpdateEnemyHealth());
+        
+        attackOverlay.SetActive(false);
 
-        float healthPercentage = (float)((enemyStats.Health * 100) / enemyStats.MaxHealth);
-        enemyHealthBar.GetComponent<UnityEngine.UI.Image>().fillAmount = healthPercentage/100;
+        if(enemyStats.Health <= 0)
+        {
+            playerStats.Exp += 20;
+            SceneManager.LoadScene("OpenWorld");
+        }
+        else
+        {
+            StartCoroutine(EnemyTurn());
+        }       
     }
 }
