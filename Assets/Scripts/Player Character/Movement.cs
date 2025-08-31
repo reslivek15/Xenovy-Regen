@@ -6,7 +6,11 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed = 0f;
+    [SerializeField] private float runSpeed = 8f;
+    [SerializeField] private float walkSpeed = 5f;
+    [SerializeField] private Animator animator;
+    private bool isWalking = false;
 
     [SerializeField] float groundDrag;
 
@@ -35,15 +39,51 @@ public class Movement : MonoBehaviour
         else
             rb.linearDamping = 0;
 
+        animator.SetFloat("speed", speed);
+
         VelocityLimiter();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        ///Debug.Log($"Move Input: {moveInput}");
+        Debug.Log($"Move Input: {moveInput}");
+        if( moveInput == Vector2.zero)
+        {
+            speed = 0;
+            isWalking = false;
+            animator.SetBool("isWalking", false);
+        }
+        else
+        {
+            if (speed < walkSpeed)
+            {
+                speed = walkSpeed;
+                isWalking = true;
+                animator.SetBool("isWalking", true);
+            }
+        }
     }
 
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.performed && isWalking == true)
+        {
+            speed = runSpeed;
+        }
+        else if (context.canceled)
+        {
+            if (isWalking == true)
+            {
+                speed = walkSpeed;
+            }
+            else
+            {
+                speed = 0;
+            }            
+        }
+
+    }
 
      void FixedUpdate()
     {
