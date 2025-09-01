@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
     private Vector2 moveInput;
     private Vector3 moveDir;
 
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();  
@@ -112,5 +113,4 @@ public class Movement : MonoBehaviour
             rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
         }
     }
-
 }
