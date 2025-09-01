@@ -46,7 +46,6 @@ public class BattleSystem : MonoBehaviour
         player = Instantiate(playerPrefab,playerStation);
         player.GetComponent<Movement>().enabled = false;
         player.GetComponent<Rotation>().enabled = false;
-        player.GetComponent<Animator>().enabled = false;
         player.name = "Player";
         playerStats = player.GetComponent<Stats>();
         playerSync = player.GetComponent<PlayerSync>();
@@ -115,8 +114,8 @@ public class BattleSystem : MonoBehaviour
 
         if(enemyStats.Health <= 0)
         {
+            playerStats.Health = playerStats.MaxHealth;
             playerStats.Exp += 20;
-            //SaveSystem.SavePlayer(playerSync.CapturePlayerData());
             SceneManager.LoadScene("OpenWorld");
         }
         else
