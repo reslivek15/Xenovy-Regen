@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+    public static Stats Instance { get; private set; }
+
     public float Strength;
     public float Speed;
 

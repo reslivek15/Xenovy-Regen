@@ -17,6 +17,8 @@ public class BattleSystem : MonoBehaviour
     private Stats playerStats;
     public Transform playerStation;
 
+    private PlayerSync playerSync;
+
     [SerializeField] private GameObject energyBar;
     
 
@@ -44,9 +46,10 @@ public class BattleSystem : MonoBehaviour
         player = Instantiate(playerPrefab,playerStation);
         player.GetComponent<Movement>().enabled = false;
         player.GetComponent<Rotation>().enabled = false;
+        player.GetComponent<Animator>().enabled = false;
         player.name = "Player";
         playerStats = player.GetComponent<Stats>();
-        
+        playerSync = player.GetComponent<PlayerSync>();
 
         enemy = Instantiate(enemyPrefab, enemyStation);
         enemy.name = "Enemy";
@@ -74,6 +77,7 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }     
     }
+    
     private void MakeDamagePopUp()
     {
         damgePopUp = Instantiate(damgePopUpPrefab, enemy.transform.GetChild(1).transform);
@@ -112,6 +116,7 @@ public class BattleSystem : MonoBehaviour
         if(enemyStats.Health <= 0)
         {
             playerStats.Exp += 20;
+            //SaveSystem.SavePlayer(playerSync.CapturePlayerData());
             SceneManager.LoadScene("OpenWorld");
         }
         else

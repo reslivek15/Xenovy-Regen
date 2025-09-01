@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3298247577351559421}
   - component: {fileID: 8962367533869717509}
-  - component: {fileID: 1359085176415256722}
-  - component: {fileID: 2192218781522078949}
   - component: {fileID: 8599101350814024409}
   - component: {fileID: 2286486807635494742}
   m_Layer: 0
@@ -65,40 +63,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1359085176415256722
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929357945993809132}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.3, y: 2, z: 1.3}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2192218781522078949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929357945993809132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c92e8d8d4cf6fb469fc855f468a1e4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  script: {fileID: 0}
 --- !u!114 &8599101350814024409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +81,9 @@ MonoBehaviour:
   MaxHealth: 50
   Energy: 0
   MaxEnergy: 3
+  Exp: 0
+  MaxExp: 0
+  Level: 0
 --- !u!65 &2286486807635494742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -242,7 +209,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -350,7 +317,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -458,7 +425,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -680,7 +647,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

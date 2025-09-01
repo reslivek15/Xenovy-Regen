@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3875695251830299462}
   - component: {fileID: 5092605918151120361}
   - component: {fileID: 5325013922196867085}
+  - component: {fileID: 5869495333876450919}
   - component: {fileID: 3505062162063216462}
   - component: {fileID: 2264939678990216442}
   - component: {fileID: 4760087901376973599}
@@ -54,6 +55,7 @@ MonoBehaviour:
   speed: 5
   runSpeed: 8
   walkSpeed: 5
+  animator: {fileID: 0}
   groundDrag: 2.5
   playeHeight: 2
   ground:
@@ -99,6 +101,18 @@ MonoBehaviour:
   Exp: 0
   MaxExp: 0
   Level: 0
+--- !u!114 &5869495333876450919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244534737054288298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0bee49f20f8a24e876c90586951276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3505062162063216462
 MonoBehaviour:
   m_ObjectHideFlags: 0

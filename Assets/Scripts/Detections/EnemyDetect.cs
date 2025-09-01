@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class EnemyDetect : MonoBehaviour
 {
-    public NextScene script;
+    public FightScenes script;
     private void OnTriggerEnter(Collider collision)
     {
         Debug.Log("<color=red>FIGHT TRIGGERED!! </color>");
-        script.MoveScene();
+        script.FightScene();
     }
 }
