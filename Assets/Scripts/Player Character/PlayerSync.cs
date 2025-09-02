@@ -23,16 +23,27 @@ public class PlayerSync : MonoBehaviour
             stats.Exp = fileData.Exp;
             stats.MaxExp = fileData.MaxExp;
             stats.Level = fileData.Level;
+
+            PlayerStatsManager.Instance.Health = stats.Health;
+            PlayerStatsManager.Instance.MaxHealth = stats.MaxHealth;
+            PlayerStatsManager.Instance.Strength = stats.Strength;
+            PlayerStatsManager.Instance.Speed = stats.Speed;
+            PlayerStatsManager.Instance.Exp = stats.Exp;
+            PlayerStatsManager.Instance.MaxExp = stats.MaxExp;
+            PlayerStatsManager.Instance.Level = stats.Level;
+            PlayerStatsManager.Instance.Level = stats.UpgradePoints;
         }
         else
         {
             // If no save file, load from PlayerStatsManager (scene-to-scene)
+            PlayerStatsManager.Instance.Health = stats.Health;
             stats.MaxHealth = PlayerStatsManager.Instance.MaxHealth;
             stats.Strength = PlayerStatsManager.Instance.Strength;
             stats.Speed = PlayerStatsManager.Instance.Speed;
             stats.Exp = PlayerStatsManager.Instance.Exp;
             stats.MaxExp = PlayerStatsManager.Instance.MaxExp;
             stats.Level = PlayerStatsManager.Instance.Level;
+            stats.UpgradePoints = PlayerStatsManager.Instance.UpgradePoints;
         }
     }
 
@@ -42,12 +53,14 @@ public class PlayerSync : MonoBehaviour
         // Save back into PlayerStatsManager before Player gets destroyed
         if (PlayerStatsManager.Instance != null)
         {
+            PlayerStatsManager.Instance.Health = stats.Health;
             PlayerStatsManager.Instance.MaxHealth = stats.MaxHealth;
             PlayerStatsManager.Instance.Strength = stats.Strength;
             PlayerStatsManager.Instance.Speed = stats.Speed;
             PlayerStatsManager.Instance.Exp = stats.Exp;
             PlayerStatsManager.Instance.MaxExp = stats.MaxExp;
             PlayerStatsManager.Instance.Level = stats.Level;
+            PlayerStatsManager.Instance.Level = stats.UpgradePoints;
         }
     }
 
@@ -63,6 +76,7 @@ public class PlayerSync : MonoBehaviour
         data.Exp = stats.Exp;
         data.MaxExp = stats.MaxExp;
         data.Level = stats.Level;
+        data.UpgradePoints = stats.UpgradePoints;
         return data;
     }
 
@@ -79,5 +93,6 @@ public class PlayerSync : MonoBehaviour
         stats.Exp = data.Exp;
         stats.MaxExp = data.MaxExp;
         stats.Level = data.Level;
+        stats.UpgradePoints = data.UpgradePoints;
     }
 }

@@ -1,10 +1,11 @@
 using Microsoft.Unity.VisualStudio.Editor;
-using Unity.Collections;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using System.Collections;
+using TMPro;
+using Unity.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class BattleSystem : MonoBehaviour
 
     private PlayerSync playerSync;
 
-    [SerializeField] private GameObject energyBar;
+    [SerializeField] private GameObject playerEnergyBar;
+    [SerializeField] private GameObject playerEnergyCount;
     
 
     [SerializeField] private GameObject enemyPrefab;
@@ -48,7 +50,15 @@ public class BattleSystem : MonoBehaviour
         player.GetComponent<Rotation>().enabled = false;
         player.name = "Player";
         playerStats = player.GetComponent<Stats>();
-        playerSync = player.GetComponent<PlayerSync>();
+        playerStats.Strength = PlayerStatsManager.Instance.Strength;
+        playerStats.Speed = PlayerStatsManager.Instance.Speed;
+        playerStats.MaxHealth = PlayerStatsManager.Instance.MaxHealth;
+        playerStats.Health = PlayerStatsManager.Instance.Health;
+        playerStats.Exp = PlayerStatsManager.Instance.Exp;
+        playerStats.MaxExp = PlayerStatsManager.Instance.MaxExp;
+        playerStats.Level = PlayerStatsManager.Instance.Level;
+        PlayerStatsManager.Instance.Level = playerStats.UpgradePoints;
+
 
         enemy = Instantiate(enemyPrefab, enemyStation);
         enemy.name = "Enemy";
@@ -65,7 +75,18 @@ public class BattleSystem : MonoBehaviour
         }
 
     }
-
+    private void UpdatePlayerEnergy()
+    {
+        float playerEnergyPercentage = (float)((playerStats.Energy * 100) / playerStats.MaxEnergy);
+        playerEnergyCount.GetComponent<TMP_Text>().text = (playerStats.Energy / 10).ToString() + "/ 10";
+        playerEnergyBar.GetComponent<UnityEngine.UI.Image>().fillAmount = playerEnergyPercentage / 100;
+    }
+    private void UpdatePlayerHealth()
+    {
+        float playerHealthPercentage = (float)((playerStats.Health * 100) / playerStats.MaxHealth);
+        healthPercentage.GetComponent<TMP_Text>().text = playerHealthPercentage.ToString() + "%";
+        playerHealthBar.GetComponent<UnityEngine.UI.Image>().fillAmount = playerHealthPercentage / 100;
+    }
     IEnumerator UpdateEnemyHealth()
     {
         float enemyHealthPercentage = (float)((enemyStats.Health * 100) / enemyStats.MaxHealth);
@@ -87,25 +108,25 @@ public class BattleSystem : MonoBehaviour
     {
         optionButtons.SetActive(true);
         statsOverlay.SetActive(true);
+
+        UpdatePlayerEnergy();
+        UpdatePlayerHealth();
     }
 
     IEnumerator EnemyTurn()
     {
         yield return new WaitForSeconds(1f);
 
-        optionButtons.SetActive(true);
-        statsOverlay.SetActive(true);
-
         playerStats.Health -= enemyStats.Strength;
+        PlayerStatsManager.Instance.Health = playerStats.Health;
 
-        float playerHealthPercentage = (float)((playerStats.Health * 100) / playerStats.MaxHealth);
-        healthPercentage.GetComponent<TMP_Text>().text = playerHealthPercentage.ToString() + "%";
-        playerHealthBar.GetComponent<UnityEngine.UI.Image>().fillAmount = playerHealthPercentage / 100;
+        PlayerTurn();
     }
     public void BasicAttack()
     {
         enemyStats.Health -= playerStats.Strength;
-
+        playerStats.Energy += 10f;
+        
         MakeDamagePopUp();
 
         StartCoroutine(UpdateEnemyHealth());
@@ -114,8 +135,16 @@ public class BattleSystem : MonoBehaviour
 
         if(enemyStats.Health <= 0)
         {
-            playerStats.Health = playerStats.MaxHealth;
             playerStats.Exp += 20;
+            playerStats.Energy = 0f;
+            if(playerStats.Exp > playerStats.MaxExp)
+            {
+                playerStats.Level++;
+                playerStats.UpgradePoints++;
+                playerStats.Exp-=playerStats.MaxExp;
+                playerStats.MaxExp += 50f;
+                
+            }
             SceneManager.LoadScene("OpenWorld");
         }
         else

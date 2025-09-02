@@ -11,4 +11,5 @@ public class PlayerSaveData
     public float Exp;
     public float MaxExp;
     public int Level;
+    public int UpgradePoints;
 }

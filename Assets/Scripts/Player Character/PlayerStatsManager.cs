@@ -16,6 +16,7 @@ public class PlayerStatsManager : MonoBehaviour
     public float Exp;
     public float MaxExp;
     public int Level;
+    public int UpgradePoints;
     void Awake()
     {
         if (Instance != null && Instance != this)
