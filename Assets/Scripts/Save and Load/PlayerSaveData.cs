@@ -6,6 +6,7 @@ public class PlayerSaveData
     public float Speed;
     public float Health;
     public float MaxHealth;
+    public float Vigor;
     public float Energy;
     public float MaxEnergy;
     public float Exp;

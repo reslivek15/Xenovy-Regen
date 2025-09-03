@@ -93,14 +93,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Strength: 15
-  Speed: 11
+  Speed: 10
   Health: 100
   MaxHealth: 100
+  Vigor: 10
   Energy: 0
   MaxEnergy: 100
   Exp: 0
   MaxExp: 0
   Level: 0
+  UpgradePoints: 0
 --- !u!114 &5869495333876450919
 MonoBehaviour:
   m_ObjectHideFlags: 0

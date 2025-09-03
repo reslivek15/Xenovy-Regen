@@ -9,6 +9,7 @@ public class PlayerStatsManager : MonoBehaviour
 
     public float Health;
     public float MaxHealth;
+    public float Vigor;
 
     public float Energy;
     public float MaxEnergy;

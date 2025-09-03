@@ -57,7 +57,8 @@ public class BattleSystem : MonoBehaviour
         playerStats.Exp = PlayerStatsManager.Instance.Exp;
         playerStats.MaxExp = PlayerStatsManager.Instance.MaxExp;
         playerStats.Level = PlayerStatsManager.Instance.Level;
-        PlayerStatsManager.Instance.Level = playerStats.UpgradePoints;
+        playerStats.UpgradePoints = PlayerStatsManager.Instance.UpgradePoints;
+        playerStats.Vigor = PlayerStatsManager.Instance.Vigor;
 
 
         enemy = Instantiate(enemyPrefab, enemyStation);
