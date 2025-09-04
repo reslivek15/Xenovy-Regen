@@ -3,6 +3,8 @@
 public class PlayerSaveData
 {
     public float Strength;
+    public float Damage;
+    public float Agility;
     public float Speed;
     public float Health;
     public float MaxHealth;

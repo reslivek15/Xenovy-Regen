@@ -5,6 +5,9 @@ public class PlayerStatsManager : MonoBehaviour
     public static PlayerStatsManager Instance { get; private set; }
 
     public float Strength;
+    public float Damage;
+
+    public float Agility;
     public float Speed;
 
     public float Health;

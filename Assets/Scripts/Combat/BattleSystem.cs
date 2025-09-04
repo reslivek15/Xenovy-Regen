@@ -51,7 +51,9 @@ public class BattleSystem : MonoBehaviour
         player.name = "Player";
         playerStats = player.GetComponent<Stats>();
         playerStats.Strength = PlayerStatsManager.Instance.Strength;
+        playerStats.Damage = PlayerStatsManager.Instance.Damage;
         playerStats.Speed = PlayerStatsManager.Instance.Speed;
+        playerStats.Agility = PlayerStatsManager.Instance.Agility;
         playerStats.MaxHealth = PlayerStatsManager.Instance.MaxHealth;
         playerStats.Health = PlayerStatsManager.Instance.Health;
         playerStats.Exp = PlayerStatsManager.Instance.Exp;
@@ -66,7 +68,7 @@ public class BattleSystem : MonoBehaviour
         enemyStats = enemy.GetComponent<Stats>();
         enemyHealthBar = enemy.transform.GetChild(1).transform.GetChild(0).transform.GetChild(2).gameObject;
 
-        if(playerStats.Speed >= enemyStats.Speed)
+        if(playerStats.Agility >= enemyStats.Agility)
         {
             PlayerTurn();
         }
@@ -125,7 +127,7 @@ public class BattleSystem : MonoBehaviour
     }
     public void BasicAttack()
     {
-        enemyStats.Health -= playerStats.Strength;
+        enemyStats.Health -= playerStats.Damage;
         playerStats.Energy += 10f;
         
         MakeDamagePopUp();
@@ -136,7 +138,7 @@ public class BattleSystem : MonoBehaviour
 
         if(enemyStats.Health <= 0)
         {
-            playerStats.Exp += 20;
+            playerStats.Exp += 60;
             playerStats.Energy = 0f;
             if(playerStats.Exp > playerStats.MaxExp)
             {

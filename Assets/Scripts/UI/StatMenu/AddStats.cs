@@ -12,26 +12,43 @@ public class AddStats : MonoBehaviour
 
     [SerializeField] private TMP_Text changeVigorValue;
     [SerializeField] private TMP_Text currentVigorValue;
+    [SerializeField] private TMP_Text currentHealthValue;
+    [SerializeField] private TMP_Text changeHealthValue;
 
     [SerializeField] private TMP_Text changeStrengthValue;
     [SerializeField] private TMP_Text currentStrengthValue;
+    [SerializeField] private TMP_Text currentDamageValue;
+    [SerializeField] private TMP_Text changeDamageValue;
 
-    [SerializeField] private TMP_Text changeSpeedValue;
+    [SerializeField] private TMP_Text changeAgilityValue;
+    [SerializeField] private TMP_Text currentAgilityValue;
     [SerializeField] private TMP_Text currentSpeedValue;
+    [SerializeField] private TMP_Text changeSpeedValue;
+
     int changeUpgradePoints;
 
     private void Start()
     {
         changeUpgradePoints = localPlayerStats.UpgradePoints;
         upgradePointsValue.text = localPlayerStats.UpgradePoints.ToString();
+        currentHealthValue.text = localPlayerStats.MaxHealth.ToString();
+        currentDamageValue.text = localPlayerStats.Damage.ToString();
+        currentAgilityValue.text = localPlayerStats.Speed.ToString();
     }
     private void Update()
     {
         upgradePointsValue.text = changeUpgradePoints.ToString();
-        changeVigorValue.text = localPlayerStats.Vigor.ToString();
-        changeStrengthValue.text = localPlayerStats.Strength.ToString();
-        changeSpeedValue.text = localPlayerStats.Speed.ToString();
         levelValue.text = localPlayerStats.Level.ToString();
+
+        changeVigorValue.text = localPlayerStats.Vigor.ToString();
+        changeHealthValue.text = localPlayerStats.MaxHealth.ToString();
+
+        changeStrengthValue.text = localPlayerStats.Strength.ToString();
+        changeDamageValue.text = localPlayerStats.Damage.ToString();
+
+        changeAgilityValue.text = localPlayerStats.Agility.ToString();
+        changeSpeedValue.text = localPlayerStats.Speed.ToString();
+        
     }
 
     public void AddVigor()
@@ -41,6 +58,8 @@ public class AddStats : MonoBehaviour
             changeUpgradePoints--;
             localPlayerStats.Vigor++;
             remotePlayerStats.Vigor++;
+            localPlayerStats.MaxHealth += 30f;
+            remotePlayerStats.MaxHealth += 30f;
         }
     }
     public void DecreaseVigor()
@@ -50,6 +69,8 @@ public class AddStats : MonoBehaviour
             changeUpgradePoints++;
             localPlayerStats.Vigor--;
             remotePlayerStats.Vigor--;
+            localPlayerStats.MaxHealth -= 30f;
+            remotePlayerStats.MaxHealth -= 30f;
         }
     }
     public void AddStrength()
@@ -59,6 +80,8 @@ public class AddStats : MonoBehaviour
             changeUpgradePoints--;
             localPlayerStats.Strength++;
             remotePlayerStats.Strength++;
+            localPlayerStats.Damage++;
+            remotePlayerStats.Damage++;
         }
     }
     public void DecreaseStrength()
@@ -67,7 +90,9 @@ public class AddStats : MonoBehaviour
         {
             changeUpgradePoints++;
             localPlayerStats.Strength--;
-            remotePlayerStats.Strength--;      
+            remotePlayerStats.Strength--;
+            localPlayerStats.Damage--;
+            remotePlayerStats.Damage--;
         }
     }
     public void AddSpeed()
@@ -75,8 +100,10 @@ public class AddStats : MonoBehaviour
         if (changeUpgradePoints > 0)
         {
             changeUpgradePoints--;
-            localPlayerStats.Speed++;
-            remotePlayerStats.Speed++;
+            localPlayerStats.Agility++;
+            remotePlayerStats.Agility++;
+            localPlayerStats.Speed += 3.5f;
+            remotePlayerStats.Speed += 3.5f;
         }
     }
     public void DecreaseSpeed()
@@ -84,8 +111,10 @@ public class AddStats : MonoBehaviour
         if (changeUpgradePoints < localPlayerStats.UpgradePoints)
         {
             changeUpgradePoints++;
-            localPlayerStats.Speed--;
-            remotePlayerStats.Speed--;
+            localPlayerStats.Agility--;
+            remotePlayerStats.Agility--;
+            localPlayerStats.Speed -= 3.5f;
+            remotePlayerStats.Speed -= 3.5f;
         }
     }
 
@@ -93,6 +122,9 @@ public class AddStats : MonoBehaviour
     {
         localPlayerStats.UpgradePoints = changeUpgradePoints;
         SaveSystem.SavePlayer(playerSync.CapturePlayerData());
+        currentHealthValue.text = localPlayerStats.MaxHealth.ToString();
+        currentDamageValue.text = localPlayerStats.Damage.ToString();
+        currentAgilityValue.text = localPlayerStats.Speed.ToString();
     }
     public void DiscardChanges()
     {

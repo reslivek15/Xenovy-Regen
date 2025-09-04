@@ -1047,7 +1047,7 @@ GameObject:
   - component: {fileID: 341017571}
   - component: {fileID: 341017570}
   m_Layer: 5
-  m_Name: SpeedChangeValue
+  m_Name: AgilityChangeValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1621,7 +1621,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Strength: 10
-  Speed: 10
+  Damage: 0
+  Agility: 0
+  Speed: 0
   Health: 100
   MaxHealth: 100
   Vigor: 10
@@ -2288,7 +2290,7 @@ GameObject:
   - component: {fileID: 602853759}
   - component: {fileID: 602853758}
   m_Layer: 5
-  m_Name: StrengthCurrentValueText
+  m_Name: DamageCurrentValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2523,7 +2525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Speed
+  m_text: Agility
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3176,7 +3178,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20
+  m_text: '35
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4311,7 +4315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1112610896}
   m_Layer: 5
-  m_Name: Speed
+  m_Name: Agility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4858,7 +4862,7 @@ GameObject:
   - component: {fileID: 1233121888}
   - component: {fileID: 1233121887}
   m_Layer: 5
-  m_Name: StrengthText
+  m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5657,7 +5661,7 @@ GameObject:
   - component: {fileID: 1479169719}
   - component: {fileID: 1479169718}
   m_Layer: 5
-  m_Name: SpeedCurrentValue
+  m_Name: AgilityCurrentValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6037,7 +6041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1562449703}
   m_Layer: 5
-  m_Name: Strength
+  m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6528,7 +6532,7 @@ Transform:
   m_GameObject: {fileID: 1798880370}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1471032, y: 0.00000004421716, z: -0.000000006576026, w: 0.98912114}
-  m_LocalPosition: {x: 1084.425, y: 891.79767, z: -3682.5205}
+  m_LocalPosition: {x: 1.4549999, y: 3.447663, z: -2.5205538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7005,7 +7009,7 @@ Transform:
   m_GameObject: {fileID: 1846376700}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1471032, y: 0.000000044217163, z: -0.0000000065760264, w: 0.98912114}
-  m_LocalPosition: {x: 1084.425, y: 891.79767, z: -3682.5205}
+  m_LocalPosition: {x: 1.4549999, y: 3.447663, z: -2.5205538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7195,10 +7199,16 @@ MonoBehaviour:
   levelValue: {fileID: 213019332}
   changeVigorValue: {fileID: 402499056}
   currentVigorValue: {fileID: 1288069686}
+  currentHealthValue: {fileID: 1363776446}
+  changeHealthValue: {fileID: 83482480}
   changeStrengthValue: {fileID: 729789233}
   currentStrengthValue: {fileID: 714275851}
-  changeSpeedValue: {fileID: 341017570}
-  currentSpeedValue: {fileID: 1479169718}
+  currentDamageValue: {fileID: 602853758}
+  changeDamageValue: {fileID: 2127882936}
+  changeAgilityValue: {fileID: 341017570}
+  currentAgilityValue: {fileID: 1479169718}
+  currentSpeedValue: {fileID: 868080469}
+  changeSpeedValue: {fileID: 409464248}
 --- !u!1 &1953458662
 GameObject:
   m_ObjectHideFlags: 0
@@ -8001,7 +8011,7 @@ GameObject:
   - component: {fileID: 2127882937}
   - component: {fileID: 2127882936}
   m_Layer: 5
-  m_Name: StrengthChangetValueText
+  m_Name: DamageChangetValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8355,15 +8365,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4815022597597176575, guid: 9d733d78f130e3c4fbc907b4c5436edb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1082
+      value: -0.97
       objectReference: {fileID: 0}
     - target: {fileID: 4815022597597176575, guid: 9d733d78f130e3c4fbc907b4c5436edb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 890
+      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 4815022597597176575, guid: 9d733d78f130e3c4fbc907b4c5436edb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3680
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4815022597597176575, guid: 9d733d78f130e3c4fbc907b4c5436edb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8679,6 +8689,10 @@ PrefabInstance:
     - target: {fileID: 3298247577351559421, guid: 710fc3f0029f66a4b834939320296324, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8599101350814024409, guid: 710fc3f0029f66a4b834939320296324, type: 3}
+      propertyPath: Speed
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6401838963346850392, guid: 710fc3f0029f66a4b834939320296324, type: 3}

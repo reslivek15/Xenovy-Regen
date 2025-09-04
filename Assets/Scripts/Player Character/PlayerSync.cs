@@ -15,6 +15,8 @@ public class PlayerSync : MonoBehaviour
         {
             // Apply loaded data
             stats.Strength = fileData.Strength;
+            stats.Damage = fileData.Damage;
+            stats.Agility = fileData.Agility;
             stats.Speed = fileData.Speed;
             stats.MaxHealth = fileData.MaxHealth;
             stats.Health = fileData.Health;
@@ -30,6 +32,8 @@ public class PlayerSync : MonoBehaviour
             PlayerStatsManager.Instance.MaxHealth = stats.MaxHealth;
             PlayerStatsManager.Instance.Vigor = stats.Vigor;
             PlayerStatsManager.Instance.Strength = stats.Strength;
+            PlayerStatsManager.Instance.Damage = stats.Damage;
+            PlayerStatsManager.Instance.Agility = stats.Agility;
             PlayerStatsManager.Instance.Speed = stats.Speed;
             PlayerStatsManager.Instance.Exp = stats.Exp;
             PlayerStatsManager.Instance.MaxExp = stats.MaxExp;
@@ -41,9 +45,12 @@ public class PlayerSync : MonoBehaviour
             // If no save file, load from PlayerStatsManager (scene-to-scene)
             stats.Health = PlayerStatsManager.Instance.Health;
             stats.MaxHealth = PlayerStatsManager.Instance.MaxHealth;
-
             stats.Vigor = PlayerStatsManager.Instance.Vigor;
+
             stats.Strength = PlayerStatsManager.Instance.Strength;
+            stats.Damage = PlayerStatsManager.Instance.Damage;
+
+            stats.Agility = PlayerStatsManager.Instance.Agility;
             stats.Speed = PlayerStatsManager.Instance.Speed;
 
             stats.Exp = PlayerStatsManager.Instance.Exp;
@@ -61,9 +68,12 @@ public class PlayerSync : MonoBehaviour
         {
             PlayerStatsManager.Instance.Health = stats.Health;
             PlayerStatsManager.Instance.MaxHealth = stats.MaxHealth;
-
             PlayerStatsManager.Instance.Vigor = stats.Vigor;
+
             PlayerStatsManager.Instance.Strength = stats.Strength;
+            PlayerStatsManager.Instance.Damage = stats.Damage;
+
+            PlayerStatsManager.Instance.Agility = stats.Agility;
             PlayerStatsManager.Instance.Speed = stats.Speed;
 
             PlayerStatsManager.Instance.Exp = stats.Exp;
@@ -77,9 +87,12 @@ public class PlayerSync : MonoBehaviour
     {
         PlayerSaveData data = new PlayerSaveData();
         data.Strength = stats.Strength;
-        data.Speed = stats.Speed;
-        data.Vigor = stats.Vigor;
+        data.Damage = stats.Damage;
 
+        data.Agility = stats.Agility;
+        data.Speed = stats.Speed;
+
+        data.Vigor = stats.Vigor;
         data.Health = stats.Health;
         data.MaxHealth = stats.MaxHealth;
 
@@ -98,9 +111,12 @@ public class PlayerSync : MonoBehaviour
         if (data == null) return; // no save data found
 
         stats.Strength = data.Strength;
-        stats.Speed = data.Speed;
-        stats.Vigor = data.Vigor;
+        stats.Damage = data.Damage;
 
+        stats.Agility = data.Agility;
+        stats.Speed = data.Speed;
+
+        stats.Vigor = data.Vigor;
         stats.Health = data.Health;
         stats.MaxHealth = data.MaxHealth;
 
